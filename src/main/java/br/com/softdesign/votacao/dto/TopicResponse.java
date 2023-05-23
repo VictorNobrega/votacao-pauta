@@ -5,9 +5,9 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class PautaResponse {
+public class TopicResponse {
 
     private Long id;
-    private String descricao;
-    private boolean aptaParaSessao;
+    private String description;
+    private boolean ableOpenSession;
 }

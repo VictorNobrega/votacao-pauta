@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Table(name = "sessao")
 @Data
 @NoArgsConstructor
-public class Sessao {
+public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,10 @@ public class Sessao {
     private Long id;
 
     @Column(name = "inicio", columnDefinition = "TIMESTAMP")
-    private LocalDateTime inicio;
+    private LocalDateTime startTime;
 
     @Column(name = "fim", columnDefinition = "TIMESTAMP")
-    private LocalDateTime fim;
+    private LocalDateTime endTime;
 
 
 }

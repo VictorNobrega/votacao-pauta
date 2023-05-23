@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "pauta")
 @Data
 @NoArgsConstructor
-public class Pauta {
+public class Topic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +18,13 @@ public class Pauta {
     private Long id;
 
     @Column(name = "descricao")
-    private String descricao;
+    private String description;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sessao_id", referencedColumnName = "id")
-    private Sessao sessao;
+    private Session session;
 
-    @OneToMany(mappedBy="pauta", fetch = FetchType.LAZY)
-    private List<Voto> votos = new ArrayList<>();
+    @OneToMany(mappedBy = "topic", fetch = FetchType.LAZY)
+    private List<Vote> votes = new ArrayList<>();
 
 }

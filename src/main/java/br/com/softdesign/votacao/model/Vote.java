@@ -1,10 +1,8 @@
 package br.com.softdesign.votacao.model;
 
-import br.com.softdesign.votacao.enums.OpcaoVoto;
+import br.com.softdesign.votacao.enums.VotingOptions;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -12,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "voto")
 @Data
 @NoArgsConstructor
-public class Voto {
+public class Vote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +18,14 @@ public class Voto {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="pauta_id", nullable=false)
-    private Pauta pauta;
+    @JoinColumn(name = "pauta_id", nullable=false)
+    private Topic topic;
 
-    @Column
-    private String idAssociado;
+    @Column(name = "id_associado")
+    private String associatedId;
 
     @Column(name = "opcao_voto")
     @Enumerated(EnumType.STRING)
-    private OpcaoVoto opcaoVoto;
+    private VotingOptions votingOptions;
 
 }

@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class MensagemResponse {
+public class MessageResponse {
 
-    private String mensagem;
+    private String message;
 
 }
