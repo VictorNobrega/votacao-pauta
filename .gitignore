@@ -35,6 +35,7 @@ replay_pid*
 
 # Ignore all build/dist directories
 target
+docker
 
 # Ignore InteliJ Idea project files
 .idea/

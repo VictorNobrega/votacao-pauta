@@ -1,0 +1,37 @@
+version: '3'
+services:
+  votacao:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: votacao/api
+    container_name: votacao
+    ports:
+      - '8080:8080'
+      - '5005:5005'
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xmx1G -Xms128m -XX:MaxMetaspaceSize=128m
+      - PROFILE=dev
+    depends_on:
+      - votacaodb
+    networks:
+      - vote-service-network
+    restart: on-failure
+
+  votacaodb:
+    image: mysql:latest
+    container_name: votacao-db
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: 'votacao'
+      MYSQL_USER: 'vote'
+      MYSQL_PASSWORD: 'vote@123'
+      MYSQL_ROOT_PASSWORD: 'vote@123'
+    networks:
+      - vote-service-network
+    volumes:
+      - ./docker/volume_mysql:/var/lib/mysql
+
+networks:
+  vote-service-network:
