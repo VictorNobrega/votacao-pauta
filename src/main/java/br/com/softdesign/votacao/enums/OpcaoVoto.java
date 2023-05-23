@@ -1,5 +1,6 @@
 package br.com.softdesign.votacao.enums;
 
+import br.com.softdesign.votacao.exceptions.VotoInvalidoException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,12 +13,14 @@ public enum OpcaoVoto {
     private int id;
     private String descricao;
 
-    public static OpcaoVoto fromString(String value) {
+    public static OpcaoVoto fromString(String value) throws VotoInvalidoException {
+
         for (OpcaoVoto opcaoVoto : OpcaoVoto.values()) {
             if (opcaoVoto.descricao.equalsIgnoreCase(value)) {
                 return opcaoVoto;
             }
         }
-        return null;
+
+        throw new VotoInvalidoException("Valores de votos permitido: Sim/Não.");
     }
 }

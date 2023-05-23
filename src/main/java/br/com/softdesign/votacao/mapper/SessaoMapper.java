@@ -1,5 +1,6 @@
 package br.com.softdesign.votacao.mapper;
 
+import br.com.softdesign.votacao.dto.MensagemResponse;
 import br.com.softdesign.votacao.dto.SessaoRequest;
 import br.com.softdesign.votacao.model.Pauta;
 import br.com.softdesign.votacao.model.Sessao;

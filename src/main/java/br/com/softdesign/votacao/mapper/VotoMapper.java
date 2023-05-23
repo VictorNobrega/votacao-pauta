@@ -2,6 +2,7 @@ package br.com.softdesign.votacao.mapper;
 
 import br.com.softdesign.votacao.dto.VotoRequest;
 import br.com.softdesign.votacao.enums.OpcaoVoto;
+import br.com.softdesign.votacao.exceptions.VotoInvalidoException;
 import br.com.softdesign.votacao.model.Pauta;
 import br.com.softdesign.votacao.model.Voto;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class VotoMapper {
 
-    public static Voto mapper(VotoRequest votoRequest, Pauta pauta) {
+    public static Voto mapper(VotoRequest votoRequest, Pauta pauta) throws VotoInvalidoException {
 
         Voto voto = new Voto();
         voto.setOpcaoVoto(OpcaoVoto.fromString(votoRequest.getVoto()));
