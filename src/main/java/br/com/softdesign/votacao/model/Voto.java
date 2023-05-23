@@ -1,15 +1,17 @@
 package br.com.softdesign.votacao.model;
 
 import br.com.softdesign.votacao.enums.OpcaoVoto;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "voto")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class Voto {
 
     @Id

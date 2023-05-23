@@ -12,4 +12,12 @@ public enum OpcaoVoto {
     private int id;
     private String descricao;
 
+    public static OpcaoVoto fromString(String value) {
+        for (OpcaoVoto opcaoVoto : OpcaoVoto.values()) {
+            if (opcaoVoto.descricao.equalsIgnoreCase(value)) {
+                return opcaoVoto;
+            }
+        }
+        return null;
+    }
 }

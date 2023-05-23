@@ -4,6 +4,7 @@ import br.com.softdesign.votacao.dto.PautaRequest;
 import br.com.softdesign.votacao.mapper.PautaMapper;
 import br.com.softdesign.votacao.model.Pauta;
 import br.com.softdesign.votacao.model.Sessao;
+import br.com.softdesign.votacao.model.Voto;
 import br.com.softdesign.votacao.repository.PautaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,12 @@ public class PautaService {
 
     public void atualizarPautaComSessao(Pauta pauta, Sessao sessaoPersistida) {
         pauta.setSessao(sessaoPersistida);
+
+        pautaRepository.save(pauta);
+    }
+
+    public void atualizarVotos(Pauta pauta, Voto votoCriado) {
+        pauta.getVotos().add(votoCriado);
 
         pautaRepository.save(pauta);
     }

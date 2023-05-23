@@ -3,6 +3,7 @@ package br.com.softdesign.votacao.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,6 @@ public class Pauta {
     private Sessao sessao;
 
     @OneToMany(mappedBy="pauta", fetch = FetchType.LAZY)
-    private List<Voto> votos;
+    private List<Voto> votos = new ArrayList<>();
 
 }

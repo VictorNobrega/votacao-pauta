@@ -10,7 +10,7 @@ import java.util.Objects;
 @Setter
 public class SessaoRequest {
 
-    @NotNull(message = "O campo idPauta não pode ser nulo.")
+    @NotNull(message = "O campo 'idPauta' não pode ser nulo.")
     private Long idPauta;
 
     private Integer tempoPautaMinutos;

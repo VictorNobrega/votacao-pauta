@@ -16,9 +16,6 @@ public class Sessao {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(mappedBy = "sessao")
-    private Pauta pauta;
-
     @Column(name = "inicio", columnDefinition = "TIMESTAMP")
     private LocalDateTime inicio;
 

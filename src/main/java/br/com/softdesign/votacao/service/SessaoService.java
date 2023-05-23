@@ -8,6 +8,8 @@ import br.com.softdesign.votacao.repository.SessaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class SessaoService {
 
@@ -27,4 +29,13 @@ public class SessaoService {
         pautaService.atualizarPautaComSessao(pauta, novaSessao);
 
     }
+
+    public boolean isSessaoValida(Sessao sessao) {
+
+        LocalDateTime horarioAtual = LocalDateTime.now();
+
+        return horarioAtual.isEqual(sessao.getInicio()) || horarioAtual.isEqual(sessao.getFim())
+                || (horarioAtual.isAfter(sessao.getInicio()) && horarioAtual.isBefore(sessao.getFim()));
+    }
+
 }

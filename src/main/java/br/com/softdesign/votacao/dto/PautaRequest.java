@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class PautaRequest {
 
-    @NotBlank(message = "O campo descricao nao pode ser vazio.")
+    @NotBlank(message = "O campo 'descricao' nao pode ser vazio.")
     private String descricao;
 
 }
