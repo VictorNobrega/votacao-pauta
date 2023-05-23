@@ -5,9 +5,12 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class PautaResponse {
+public class ResultadoPautaResponse {
 
     private Long id;
     private String descricao;
-    private boolean aptaParaSessao;
+    private String resultado;
+    private long votosSim;
+    private long votosNao;
+
 }

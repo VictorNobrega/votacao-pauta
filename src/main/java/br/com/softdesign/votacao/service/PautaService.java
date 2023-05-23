@@ -3,6 +3,7 @@ package br.com.softdesign.votacao.service;
 import br.com.softdesign.votacao.dto.MensagemResponse;
 import br.com.softdesign.votacao.dto.PautaRequest;
 import br.com.softdesign.votacao.dto.PautaResponse;
+import br.com.softdesign.votacao.dto.ResultadoPautaResponse;
 import br.com.softdesign.votacao.exceptions.PautaNaoEncontradaException;
 import br.com.softdesign.votacao.mapper.PautaMapper;
 import br.com.softdesign.votacao.model.Pauta;
@@ -11,6 +12,8 @@ import br.com.softdesign.votacao.model.Voto;
 import br.com.softdesign.votacao.repository.PautaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PautaService {
@@ -27,10 +30,16 @@ public class PautaService {
                 "Para abrir uma sessão de voto e para vota, utilize o id: %d", pautaCriada.getId()));
     }
 
-    public PautaResponse resultadoPauta(Long pautaId) throws PautaNaoEncontradaException {
+    public ResultadoPautaResponse buscarResultadoPauta(Long pautaId) throws PautaNaoEncontradaException {
         Pauta pauta = buscarPauta(pautaId);
 
         return PautaMapper.mapper(pauta);
+    }
+
+    public List<PautaResponse> buscarPautasInfos() {
+        List<Pauta> pautas = pautaRepository.findAll();
+
+        return PautaMapper.mapper(pautas);
     }
 
     public Pauta buscarPauta(Long pautaId) throws PautaNaoEncontradaException {
