@@ -1,17 +1,14 @@
 package br.com.softdesign.votacao.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "pauta")
-@Getter
-@Setter
-@Builder
+@Data
+@NoArgsConstructor
 public class Pauta {
 
     @Id

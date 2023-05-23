@@ -1,15 +1,14 @@
 package br.com.softdesign.votacao.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sessao")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class Sessao {
 
     @Id
