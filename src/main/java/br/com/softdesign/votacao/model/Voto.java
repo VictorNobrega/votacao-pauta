@@ -1,33 +1,31 @@
 package br.com.softdesign.votacao.model;
 
+import br.com.softdesign.votacao.enums.OpcaoVoto;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "voto")
+@Getter
+@Setter
 public class Voto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "descricao")
-    private String descricao;
+    @ManyToOne
+    @JoinColumn(name="pauta_id", nullable=false)
+    private Pauta pauta;
 
-    public Long getId() {
-        return id;
-    }
+    @Column
+    private String idAssociado;
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    @Column(name = "opcao_voto")
+    @Enumerated(EnumType.STRING)
+    private OpcaoVoto opcaoVoto;
 
 }
