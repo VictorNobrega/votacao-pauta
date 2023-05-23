@@ -4,6 +4,7 @@ import br.com.softdesign.votacao.dto.MessageResponse;
 import br.com.softdesign.votacao.dto.SessionRequest;
 import br.com.softdesign.votacao.exceptions.TopicNotFoundException;
 import br.com.softdesign.votacao.exceptions.InvalidSessionException;
+import br.com.softdesign.votacao.exceptions.SessionCreatedException;
 import br.com.softdesign.votacao.mapper.SessionMapper;
 import br.com.softdesign.votacao.model.Topic;
 import br.com.softdesign.votacao.model.Session;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Service
 public class SessionService {
@@ -22,9 +24,15 @@ public class SessionService {
     @Autowired
     private TopicService topicService;
 
-    public MessageResponse createSession(SessionRequest sessionRequest) throws TopicNotFoundException {
+    public MessageResponse createSession(SessionRequest sessionRequest) throws TopicNotFoundException,
+            SessionCreatedException {
 
         Topic topic = topicService.searchTopic(sessionRequest.getTopicId());
+
+        if (Objects.nonNull(topic.getSession())) {
+            throw new SessionCreatedException("A pauta informada já possui um sessão aberta, ou já foi votada.");
+        }
+
         Session session = SessionMapper.mapper(sessionRequest);
 
         Session newSession = sessionRepository.save(session);
