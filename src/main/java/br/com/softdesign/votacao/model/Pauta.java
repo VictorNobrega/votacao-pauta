@@ -1,5 +1,6 @@
 package br.com.softdesign.votacao.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Table(name = "pauta")
 @Getter
 @Setter
+@Builder
 public class Pauta {
 
     @Id
@@ -24,7 +26,7 @@ public class Pauta {
     @JoinColumn(name = "sessao_id", referencedColumnName = "id")
     private Sessao sessao;
 
-    @OneToMany(mappedBy="pauta")
+    @OneToMany(mappedBy="pauta", fetch = FetchType.LAZY)
     private List<Voto> votos;
 
 }
