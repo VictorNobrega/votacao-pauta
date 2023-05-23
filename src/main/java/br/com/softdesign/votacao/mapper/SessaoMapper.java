@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Component
 public class SessaoMapper {
 
-    public static Sessao mapper(SessaoRequest sessaoRepository, Pauta pauta) {
+    public static Sessao mapper(SessaoRequest sessaoRepository) {
 
         Sessao sessao = new Sessao();
         sessao.setInicio(LocalDateTime.now());

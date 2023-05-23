@@ -1,6 +1,7 @@
 package br.com.softdesign.votacao.service;
 
 import br.com.softdesign.votacao.dto.PautaRequest;
+import br.com.softdesign.votacao.dto.PautaResponse;
 import br.com.softdesign.votacao.mapper.PautaMapper;
 import br.com.softdesign.votacao.model.Pauta;
 import br.com.softdesign.votacao.model.Sessao;
@@ -19,6 +20,12 @@ public class PautaService {
         Pauta pauta = PautaMapper.mapper(pautaRequest);
 
         pautaRepository.save(pauta);
+    }
+
+    public PautaResponse resultadoPauta(Long pautaId) {
+        Pauta pauta = buscarPauta(pautaId);
+
+        return PautaMapper.mapper(pauta);
     }
 
     public Pauta buscarPauta(Long pautaId) {

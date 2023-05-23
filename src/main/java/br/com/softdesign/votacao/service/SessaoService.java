@@ -22,7 +22,7 @@ public class SessaoService {
     public void criarSessao(SessaoRequest sessaoRequest) {
 
         Pauta pauta = pautaService.buscarPauta(sessaoRequest.getIdPauta());
-        Sessao sessao = SessaoMapper.mapper(sessaoRequest, pauta);
+        Sessao sessao = SessaoMapper.mapper(sessaoRequest);
 
         Sessao novaSessao = sessaoRepository.save(sessao);
 

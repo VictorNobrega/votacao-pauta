@@ -25,12 +25,18 @@ public class VotoService {
         Pauta pauta = pautaService.buscarPauta(votoRequest.getIdPauta());
 
         if(sessaoService.isSessaoValida(pauta.getSessao())) {
-            Voto voto = VotoMapper.mapper(votoRequest, pauta);
 
-            Voto votoCriado = votoRepository.save(voto);
+            boolean isVotoValido = pauta.getVotos().stream()
+                    .noneMatch(voto -> voto.getIdAssociado().equals(votoRequest.getIdAssociado()));
 
-            pautaService.atualizarVotos(pauta, votoCriado);
 
+            if (isVotoValido) {
+                Voto voto = VotoMapper.mapper(votoRequest, pauta);
+
+                Voto votoCriado = votoRepository.save(voto);
+
+                pautaService.atualizarVotos(pauta, votoCriado);
+            }
         }
     }
 }
