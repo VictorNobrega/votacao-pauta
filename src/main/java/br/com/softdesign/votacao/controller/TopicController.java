@@ -30,7 +30,7 @@ public class TopicController {
     })
     @ApiOperation(value = "Endpoint para criar uma pauta para ser votada.")
     @RequestMapping(method = RequestMethod.POST, produces="application/json", consumes="application/json")
-    private ResponseEntity<MessageResponse> createTopic(@Valid @RequestBody TopicRequest topicRequest) {
+    public ResponseEntity<MessageResponse> createTopic(@Valid @RequestBody TopicRequest topicRequest) {
         return new ResponseEntity<>(topicService.createTopic(topicRequest), HttpStatus.OK);
     }
 
@@ -41,7 +41,7 @@ public class TopicController {
     })
     @ApiOperation(value = "Endpoint para verificar resultados de uma Pauta.")
     @RequestMapping(value = "/{topicId}", method = RequestMethod.GET, produces="application/json")
-    private ResponseEntity<TopicResultResponse> searchTopicResult(@PathVariable("topicId") Long topicId) {
+    public ResponseEntity<TopicResultResponse> searchTopicResult(@PathVariable("topicId") Long topicId) {
         try {
             return new ResponseEntity<>(topicService.searchTopicResult(topicId), HttpStatus.OK);
         } catch (Exception e) {
@@ -55,7 +55,7 @@ public class TopicController {
     })
     @ApiOperation(value = "Endpoint para verificar informações de uma Pauta.")
     @RequestMapping(value = "/infos", method = RequestMethod.GET, produces="application/json")
-    private ResponseEntity<List<TopicResponse>> searchInfoTopic() {
+    public ResponseEntity<List<TopicResponse>> searchInfoTopic() {
         return new ResponseEntity<>(topicService.searchInfoTopic(), HttpStatus.OK);
     }
 

@@ -32,7 +32,7 @@ public class VoteController {
     })
     @ApiOperation(value = "Endpoint para votar em uma pauta.")
     @RequestMapping(method = RequestMethod.POST, produces="application/json", consumes="application/json")
-    private ResponseEntity<MessageResponse> createVote(@Valid @RequestBody VoteRequest voteRequest) {
+    public ResponseEntity<MessageResponse> createVote(@Valid @RequestBody VoteRequest voteRequest) {
         try {
             return new ResponseEntity<>(voteService.createVote(voteRequest), HttpStatus.OK);
         } catch (Exception e) {

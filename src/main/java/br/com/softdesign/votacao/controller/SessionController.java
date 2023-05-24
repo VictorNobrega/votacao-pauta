@@ -31,7 +31,7 @@ public class SessionController {
     })
     @ApiOperation(value = "Endpoint para criar uma Sessão de votação para uma Pauta cadastrada.")
     @RequestMapping(method = RequestMethod.POST, produces="application/json", consumes="application/json")
-    private ResponseEntity<MessageResponse> createSession(@Valid @RequestBody SessionRequest sessionRequest) {
+    public ResponseEntity<MessageResponse> createSession(@Valid @RequestBody SessionRequest sessionRequest) {
         try {
             return new ResponseEntity<>(sessionService.createSession(sessionRequest), HttpStatus.OK);
         } catch (Exception e) {
