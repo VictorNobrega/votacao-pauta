@@ -1,8 +1,8 @@
 package br.com.softdesign.votacao.service;
 
-import br.com.softdesign.votacao.dto.MessageResponse;
-import br.com.softdesign.votacao.dto.VoteRequest;
-import br.com.softdesign.votacao.exceptions.MemberHasVotdException;
+import br.com.softdesign.votacao.dto.response.MessageResponse;
+import br.com.softdesign.votacao.dto.request.VoteRequest;
+import br.com.softdesign.votacao.exceptions.MemberHasVoteException;
 import br.com.softdesign.votacao.exceptions.TopicNotFoundException;
 import br.com.softdesign.votacao.exceptions.InvalidSessionException;
 import br.com.softdesign.votacao.exceptions.InvalidVoteException;
@@ -26,7 +26,7 @@ public class VoteService {
     private SessionService sessionService;
 
     public MessageResponse createVote(VoteRequest voteRequest) throws TopicNotFoundException,
-            InvalidSessionException, MemberHasVotdException, InvalidVoteException {
+            InvalidSessionException, MemberHasVoteException, InvalidVoteException {
 
         Topic topic = topicService.searchTopic(voteRequest.getTopicId());
 
@@ -41,12 +41,12 @@ public class VoteService {
         return new MessageResponse("Voto registrado com sucesso.");
     }
 
-    private void hasMemberVoted(VoteRequest voteRequest, Topic topic) throws MemberHasVotdException {
+    private void hasMemberVoted(VoteRequest voteRequest, Topic topic) throws MemberHasVoteException {
         boolean hasMemberVoted = topic.getVotes().stream()
                 .anyMatch(vote -> vote.getAssociatedId().equals(voteRequest.getAssociateId()));
 
         if (hasMemberVoted) {
-            throw new MemberHasVotdException("O associado já possui o voto registrado.");
+            throw new MemberHasVoteException("O associado já possui o voto registrado.");
         }
     }
 }

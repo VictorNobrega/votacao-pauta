@@ -1,8 +1,8 @@
 package br.com.softdesign.votacao.mapper;
 
-import br.com.softdesign.votacao.dto.TopicRequest;
-import br.com.softdesign.votacao.dto.TopicResponse;
-import br.com.softdesign.votacao.dto.TopicResultResponse;
+import br.com.softdesign.votacao.dto.request.TopicRequest;
+import br.com.softdesign.votacao.dto.response.TopicResponse;
+import br.com.softdesign.votacao.dto.response.TopicResultResponse;
 import br.com.softdesign.votacao.enums.VotingOptions;
 import br.com.softdesign.votacao.model.Topic;
 import br.com.softdesign.votacao.model.Vote;
@@ -25,8 +25,8 @@ public class TopicMapper {
 
     public static TopicResultResponse mapper(Topic topic) {
 
-        long numberYesVotes = getNumberYesVotes(topic);
-        long numberNoVotes = getNumberNoVotes(topic.getVotes(), numberYesVotes);
+        long numberYesVotes = getNumberYesVotes(topic.getVotes());
+        long numberNoVotes = getNumberNoVotes(topic.getVotes());
 
         return TopicResultResponse.builder()
                 .id(topic.getId())
@@ -50,12 +50,14 @@ public class TopicMapper {
         return result;
     }
 
-    private static long getNumberNoVotes(List<Vote> votes, long numberYesVotes) {
-        return votes.size() - numberYesVotes;
+    private static long getNumberNoVotes(List<Vote> votes) {
+        return votes.stream()
+                .filter(vote -> VotingOptions.NAO.equals(vote.getVotingOptions()))
+                .count();
     }
 
-    private static long getNumberYesVotes(Topic topic) {
-        return topic.getVotes().stream()
+    private static long getNumberYesVotes(List<Vote> votes) {
+        return votes.stream()
                 .filter(vote -> VotingOptions.SIM.equals(vote.getVotingOptions()))
                 .count();
     }

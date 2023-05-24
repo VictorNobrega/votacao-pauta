@@ -1,5 +1,6 @@
-package br.com.softdesign.votacao.dto;
+package br.com.softdesign.votacao.dto.request;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@Builder
 public class SessionRequest {
 
     public static final int TIME_DEFAULT = 1;

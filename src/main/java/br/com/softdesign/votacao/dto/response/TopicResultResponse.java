@@ -1,4 +1,4 @@
-package br.com.softdesign.votacao.dto;
+package br.com.softdesign.votacao.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

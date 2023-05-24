@@ -1,6 +1,6 @@
 package br.com.softdesign.votacao.mapper;
 
-import br.com.softdesign.votacao.dto.VoteRequest;
+import br.com.softdesign.votacao.dto.request.VoteRequest;
 import br.com.softdesign.votacao.enums.VotingOptions;
 import br.com.softdesign.votacao.exceptions.InvalidVoteException;
 import br.com.softdesign.votacao.model.Topic;

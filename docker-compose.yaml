@@ -1,5 +1,20 @@
 version: '3'
 services:
+  votacaodb:
+    image: mysql:latest
+    container_name: votacao-db
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: 'votacao'
+      MYSQL_USER: 'vote'
+      MYSQL_PASSWORD: 'vote@123'
+      MYSQL_ROOT_PASSWORD: 'vote@123'
+    networks:
+      - vote-service-network
+    volumes:
+      - ./docker/volume_mysql:/var/lib/mysql
+
   votacao:
     build:
       context: ./
@@ -17,21 +32,6 @@ services:
     networks:
       - vote-service-network
     restart: on-failure
-
-  votacaodb:
-    image: mysql:latest
-    container_name: votacao-db
-    ports:
-      - '3306:3306'
-    environment:
-      MYSQL_DATABASE: 'votacao'
-      MYSQL_USER: 'vote'
-      MYSQL_PASSWORD: 'vote@123'
-      MYSQL_ROOT_PASSWORD: 'vote@123'
-    networks:
-      - vote-service-network
-    volumes:
-      - ./docker/volume_mysql:/var/lib/mysql
 
 networks:
   vote-service-network:

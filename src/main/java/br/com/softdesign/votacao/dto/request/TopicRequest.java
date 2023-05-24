@@ -1,10 +1,14 @@
-package br.com.softdesign.votacao.dto;
+package br.com.softdesign.votacao.dto.request;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class TopicRequest {
 
     @NotBlank(message = "O campo 'description' nao pode ser vazio.")

@@ -1,7 +1,7 @@
 package br.com.softdesign.votacao.controller;
 
-import br.com.softdesign.votacao.dto.MessageResponse;
-import br.com.softdesign.votacao.dto.VoteRequest;
+import br.com.softdesign.votacao.dto.response.MessageResponse;
+import br.com.softdesign.votacao.dto.request.VoteRequest;
 import br.com.softdesign.votacao.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

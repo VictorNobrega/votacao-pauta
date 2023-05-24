@@ -1,6 +1,6 @@
 package br.com.softdesign.votacao.mapper;
 
-import br.com.softdesign.votacao.dto.SessionRequest;
+import br.com.softdesign.votacao.dto.request.SessionRequest;
 import br.com.softdesign.votacao.model.Session;
 import org.springframework.stereotype.Component;
 

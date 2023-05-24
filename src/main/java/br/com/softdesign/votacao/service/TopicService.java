@@ -1,9 +1,9 @@
 package br.com.softdesign.votacao.service;
 
-import br.com.softdesign.votacao.dto.MessageResponse;
-import br.com.softdesign.votacao.dto.TopicRequest;
-import br.com.softdesign.votacao.dto.TopicResponse;
-import br.com.softdesign.votacao.dto.TopicResultResponse;
+import br.com.softdesign.votacao.dto.response.MessageResponse;
+import br.com.softdesign.votacao.dto.request.TopicRequest;
+import br.com.softdesign.votacao.dto.response.TopicResponse;
+import br.com.softdesign.votacao.dto.response.TopicResultResponse;
 import br.com.softdesign.votacao.exceptions.TopicNotFoundException;
 import br.com.softdesign.votacao.mapper.TopicMapper;
 import br.com.softdesign.votacao.model.Topic;

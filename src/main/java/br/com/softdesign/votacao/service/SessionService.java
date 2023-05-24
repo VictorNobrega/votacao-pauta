@@ -1,7 +1,7 @@
 package br.com.softdesign.votacao.service;
 
-import br.com.softdesign.votacao.dto.MessageResponse;
-import br.com.softdesign.votacao.dto.SessionRequest;
+import br.com.softdesign.votacao.dto.response.MessageResponse;
+import br.com.softdesign.votacao.dto.request.SessionRequest;
 import br.com.softdesign.votacao.exceptions.TopicNotFoundException;
 import br.com.softdesign.votacao.exceptions.InvalidSessionException;
 import br.com.softdesign.votacao.exceptions.SessionCreatedException;

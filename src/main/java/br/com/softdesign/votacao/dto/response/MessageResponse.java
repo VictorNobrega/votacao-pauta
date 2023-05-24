@@ -1,10 +1,12 @@
-package br.com.softdesign.votacao.dto;
+package br.com.softdesign.votacao.dto.response;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
+@EqualsAndHashCode
 public class MessageResponse {
 
     private String message;
