@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class TopicRequest {
 
-    @NotBlank(message = "O campo 'description' nao pode ser vazio.")
+    @NotBlank(message = "O campo 'description' não pode ser vazio.")
     private String description;
 
 }

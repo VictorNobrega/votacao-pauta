@@ -78,7 +78,7 @@ public class SessionServiceTest {
     private Topic getTopic() {
         Topic topic = new Topic();
         topic.setId(1L);
-        topic.setDescription("Topico para teste");
+        topic.setDescription("Pauta para teste");
         topic.setSession(getSession());
         topic.setVotes(Collections.emptyList());
 

@@ -21,6 +21,6 @@ public enum VotingOptions {
             }
         }
 
-        throw new InvalidVoteException("Valores de votos permitido: Sim/Não.");
+        throw new InvalidVoteException("Valores de voto permitido: Sim/Não.");
     }
 }

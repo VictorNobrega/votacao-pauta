@@ -27,7 +27,7 @@ public class TopicService {
         Topic newTopic = topicRepository.save(topic);
 
         return new MessageResponse(String.format("Pauta criada com sucesso. " +
-                "Para abrir uma sessão de voto e para vota, utilize o id: %d", newTopic.getId()));
+                "Para abrir uma sessão de voto e para votar, utilize o id: %d", newTopic.getId()));
     }
 
     public TopicResultResponse searchTopicResult(Long topicId) throws TopicNotFoundException {

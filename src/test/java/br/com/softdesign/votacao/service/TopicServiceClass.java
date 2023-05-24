@@ -98,7 +98,7 @@ public class TopicServiceClass {
     private Topic getTopic() {
         Topic topic = new Topic();
         topic.setId(1L);
-        topic.setDescription("Topico para teste.");
+        topic.setDescription("Pauta para teste.");
         topic.setSession(getSession());
         topic.setVotes(Collections.emptyList());
 
@@ -107,13 +107,13 @@ public class TopicServiceClass {
 
     private TopicRequest getTopicRequest() {
         return TopicRequest.builder()
-                .description("Topico para teste.")
+                .description("Pauta para teste.")
                 .build();
     }
 
     private MessageResponse getMessageResponseExpected() {
         return new MessageResponse(String.format("Pauta criada com sucesso. " +
-                "Para abrir uma sessão de voto e para vota, utilize o id: %d", getTopic().getId()));
+                "Para abrir uma sessão de voto e para votar, utilize o id: %d", getTopic().getId()));
     }
 
     private Session getSession() {

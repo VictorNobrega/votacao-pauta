@@ -30,7 +30,7 @@ public class SessionService {
         Topic topic = topicService.searchTopic(sessionRequest.getTopicId());
 
         if (Objects.nonNull(topic.getSession())) {
-            throw new SessionCreatedException("A pauta informada já possui um sessão aberta, ou já foi votada.");
+            throw new SessionCreatedException("A Pauta informada já possui uma sessão aberta, ou já foi votada.");
         }
 
         Session session = SessionMapper.mapper(sessionRequest);
@@ -50,7 +50,7 @@ public class SessionService {
                 || (currentTime.isAfter(session.getStartTime()) && currentTime.isBefore(session.getEndTime()));
 
         if (!isValidSession) {
-            throw new InvalidSessionException("A Sessão de voto não está disponivel");
+            throw new InvalidSessionException("A Sessão de voto não está disponível.");
         }
     }
 
